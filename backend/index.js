@@ -25,7 +25,7 @@ const corsOptions = {
  // Enable CORS middleware
 
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: 'https://travo-2pk9.vercel.app',
   credentials: true // Allow credentials to be sent
 }));
 
