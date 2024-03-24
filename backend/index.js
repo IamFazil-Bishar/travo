@@ -17,17 +17,26 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 8000;
 
-const corsOptions = {
-  origin: true,
-  Credential: true
-}
+// const corsOptions = {
+//   origin: true,
+//   Credential: true
+// }
 
  // Enable CORS middleware
 
-app.use(cors({
-  origin: 'https://travo-2pk9.vercel.app/',
-  credentials: true // Allow credentials to be sent
-}));
+app.use((req, res, next) => {
+  const allowedOrigins = ["https://travo-2pk9.vercel.app"];
+  const origin = req.headers.origin;
+
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+  }
+  
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  next();
+});
 
 // database connection
 mongoose.set("strictQuery", false);
