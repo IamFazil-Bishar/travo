@@ -1,0 +1,11 @@
+{
+  "routes": [
+    {
+      "src": "/api/v1/tours/search/getFeaturedTours",
+      "methods": ["GET"],
+      "headers": {
+        "Access-Control-Allow-Origin": "*"
+      }
+    }
+  ]
+}
